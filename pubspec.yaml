@@ -1,0 +1,12 @@
+name: fhir_forward
+description: Very simple server that forwards a restful request and returns the result (used because Flutter web doesn't do well with CORS)
+version: 0.0.1
+repository: https://github.com/fhir-fli/fhir_forward
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  http: ^1.1.0
+  shelf: ^1.4.1
+  shelf_router: ^1.1.4
