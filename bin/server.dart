@@ -40,14 +40,16 @@ class FhirForwardController {
         return Response.badRequest();
       } else {
         try {
-          final Uri url =
-              Uri.parse(request.url.toString().replaceFirst('?url=', ''));
+          final urlString = request.url.toString().replaceFirst('?url=', '');
+          final Uri url = Uri.parse(
+              urlString.startsWith('http') ? urlString : 'https://$urlString');
           final Map<String, String> headers = {};
           final headerValues = [
             'connection',
             'accept',
             'accept-encoding',
-            'content-type'
+            'content-type',
+            'authorization',
           ];
           for (final value in headerValues) {
             if (request.headers[value] != null) {
